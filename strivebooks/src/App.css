@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.bookCover {
+  max-height: 250px;
+  object-fit: cover;
+}
