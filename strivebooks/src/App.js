@@ -3,6 +3,7 @@ import MyNavbar from './components/MyNavbar'
 import MyFooter from './components/MyFooter'
 import Welcome from './components/Welcome'
 import LatestReleases from './components/LatestReleases'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
