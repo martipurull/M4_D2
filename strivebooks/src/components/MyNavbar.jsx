@@ -7,8 +7,8 @@ import Container from 'react-bootstrap/Container'
 const MyNavbar = () => (
     <Navbar bg="dark" variant="dark">
         <Container>
-            <Navbar.Brand href="#">SB</Navbar.Brand>
-            <Nav className="me-auto">
+            <Navbar.Brand className="navbar-fake-logo" href="#">SB</Navbar.Brand>
+            <Nav className="ml-auto">
                 <Nav.Link href="#">Home</Nav.Link>
                 <Nav.Link href="#">About</Nav.Link>
                 <Nav.Link href="#">Browse</Nav.Link>

@@ -41,3 +41,8 @@
   max-height: 250px;
   object-fit: cover;
 }
+
+.navbar-fake-logo {
+  color: #02ff84!important;
+  font-weight: 700;
+}

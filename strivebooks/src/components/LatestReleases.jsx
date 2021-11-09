@@ -1,4 +1,4 @@
-import { Container, Row, Col, Figure } from "react-bootstrap";
+import { Container, Figure } from "react-bootstrap";
 import scifiBooks from '../data/scifi.json'
 
 
