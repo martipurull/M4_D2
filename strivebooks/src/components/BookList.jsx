@@ -35,7 +35,7 @@ class BookList extends Component {
 
                     <Col className="d-flex flex-wrap">
                         {this.bookArr.map((item) => (
-                            <SingleBook bookObj={item} />
+                            <SingleBook key={item.asin} bookObj={item} />
                         ))}
                     </Col>
                 </Row>
