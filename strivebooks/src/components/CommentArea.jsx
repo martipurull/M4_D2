@@ -2,6 +2,7 @@ import { Component } from 'react'
 import Form from 'react-bootstrap/Form'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
+import { Trash } from 'react-bootstrap-icons'
 
 class CommentArea extends Component {
     state = {
@@ -89,6 +90,10 @@ class CommentArea extends Component {
         }
     }
 
+    deleteComment = async (commentId) => {
+        console.log(commentId)
+    }
+
     render() {
         return (
             <>
@@ -97,7 +102,9 @@ class CommentArea extends Component {
 
                     {
                         this.state.selectedBookComments.map((item) => (
-                            <ListGroup.Item key={item._id}>{item.comment} -- Rating: {item.rate}</ListGroup.Item>
+                            <ListGroup.Item key={item._id}>
+                                {item.comment} -- Rating: {item.rate} -- <Button variant="danger" size="sm" className="mt-2" onClick={this.deleteComment}><Trash /></Button>
+                            </ListGroup.Item>
                         ))
                     }
                 </ListGroup>

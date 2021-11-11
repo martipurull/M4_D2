@@ -32,7 +32,6 @@ class BookList extends Component {
                     <Button variant="outline-primary" onClick={this.searchBook}>Search</Button>
                 </Form>
                 <Row>
-
                     <Col className="d-flex flex-wrap">
                         {this.bookArr.map((item) => (
                             <SingleBook key={item.asin} bookObj={item} />
@@ -41,7 +40,6 @@ class BookList extends Component {
                 </Row>
             </Container>
         )
-
     }
 }
 
