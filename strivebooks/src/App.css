@@ -37,9 +37,21 @@
   }
 }
 
-.bookCover {
-  max-height: 250px;
-  object-fit: cover;
+.book-cover {
+  max-width: 200px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.book-cover img {
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.my-badge {
+  position: absolute;
+  font-size: 1.5rem!important;
 }
 
 .navbar-fake-logo {
