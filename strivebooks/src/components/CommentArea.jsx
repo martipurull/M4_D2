@@ -19,13 +19,12 @@ class CommentArea extends Component {
             comment: '',
             rate: 5,
             elementId: this.props.bookAsin
-        }
+        },
 
     }
 
     componentDidMount = () => {
         this.fetchComments()
-
     }
 
     fetchComments = async () => {
@@ -91,7 +90,18 @@ class CommentArea extends Component {
     }
 
     deleteComment = async (commentId) => {
-        console.log(commentId)
+        try {
+            await fetch(this.state.commentsEndpoint + commentId, {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json',
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTgyOGY4NmFhY2FhMjAwMTU1MmExODAiLCJpYXQiOjE2MzY2MzY5MzcsImV4cCI6MTYzNzg0NjUzN30.uqOJ27uEjuSzPvSujE9DuNRI0lJELmoanrTPYDsO6qU"
+                }
+            })
+            window.location.reload()
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     render() {
@@ -103,7 +113,7 @@ class CommentArea extends Component {
                     {
                         this.state.selectedBookComments.map((item) => (
                             <ListGroup.Item key={item._id}>
-                                {item.comment} -- Rating: {item.rate} -- <Button variant="danger" size="sm" className="mt-2" onClick={this.deleteComment}><Trash /></Button>
+                                {item.comment} -- Rating: {item.rate} -- <Button variant="danger" size="sm" className="mt-2" onClick={() => this.deleteComment(item._id)}><Trash /></Button>
                             </ListGroup.Item>
                         ))
                     }
