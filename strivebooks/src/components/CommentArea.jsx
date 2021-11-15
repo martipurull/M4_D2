@@ -18,8 +18,9 @@ class CommentArea extends Component {
         commentToSubmit: {
             comment: '',
             rate: 5,
-            elementId: this.props.bookAsin
+            elementId: this.props.selectedBookAsin
         },
+        selectedBookAsin: this.props.selectedBookAsin
 
     }
 
@@ -80,7 +81,7 @@ class CommentArea extends Component {
                     commentToSubmit: {
                         comment: '',
                         rate: 5,
-                        elementId: this.props.bookAsin
+                        elementId: this.props.selectedBookAsin
                     }
                 })
             } else {

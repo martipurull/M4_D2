@@ -22,6 +22,11 @@ class BookList extends Component {
             this.bookArr = items.filter(b => b.title.toLowerCase().includes(this.state.bookQuery))
         )
     }
+    handleClick = (asin) => {
+        this.setState({
+            selectedBookAsin: asin
+        })
+    }
 
     render() {
         return (
@@ -35,9 +40,7 @@ class BookList extends Component {
                 <Row>
                     <Col className="d-flex flex-wrap col-12 col-sm-8">
                         {this.bookArr.map((item) => (
-                            <SingleBook key={item.asin} selected={this.state.selected} bookObj={item} onClick={() => this.setState({
-                                selectedBookAsin: item.asin
-                            })} />
+                            <SingleBook key={item.asin} bookObj={item} handleClick={this.handleClick} />
                         ))}
                     </Col>
                     <Col className="col-12 col-sm-4">
