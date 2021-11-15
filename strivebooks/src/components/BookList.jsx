@@ -5,12 +5,13 @@ import SingleBook from "./SingleBook";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
+import CommentArea from "./CommentArea";
 
 
 
 class BookList extends Component {
     state = {
-        selectedBook: null,
+        selectedBookAsin: null,
         bookQuery: '',
     }
 
@@ -32,10 +33,17 @@ class BookList extends Component {
                     <Button variant="outline-primary" onClick={this.searchBook}>Search</Button>
                 </Form>
                 <Row>
-                    <Col className="d-flex flex-wrap">
+                    <Col className="d-flex flex-wrap col-12 col-sm-8">
                         {this.bookArr.map((item) => (
-                            <SingleBook key={item.asin} bookObj={item} />
+                            <SingleBook key={item.asin} selected={this.state.selected} bookObj={item} onClick={() => this.setState({
+                                selectedBookAsin: item.asin
+                            })} />
                         ))}
+                    </Col>
+                    <Col className="col-12 col-sm-4">
+                        {
+                            this.state.selectedBookAsin ? <CommentArea selectedBookAsin={this.state.selectedBookAsin} /> : <CommentArea />
+                        }
                     </Col>
                 </Row>
             </Container>

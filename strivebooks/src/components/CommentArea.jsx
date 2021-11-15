@@ -12,7 +12,7 @@ class CommentArea extends Component {
             }
         },
         commentsEndpoint: "https://striveschool-api.herokuapp.com/api/comments/",
-        selectedBookAsin: this.props.bookAsin,
+
         selectedBookComments: [],
         isError: false,
         commentToSubmit: {
@@ -25,6 +25,12 @@ class CommentArea extends Component {
 
     componentDidMount = () => {
         this.fetchComments()
+    }
+
+    componentDidUpdate = (prevProps) => {
+        if (prevProps.selectedBookAsin !== this.props.selectedBookAsin) {
+            this.fetchComments()
+        }
     }
 
     fetchComments = async () => {
@@ -44,6 +50,7 @@ class CommentArea extends Component {
             this.setState({
                 isError: true
             })
+            console.log(error)
         }
     }
 
