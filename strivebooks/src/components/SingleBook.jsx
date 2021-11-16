@@ -14,7 +14,7 @@ class SingleBook extends Component {
 
     render() {
         return (
-            <Card className="book-cover" onClick={this.props.handleClick(this.state.selectedBookAsin)}>
+            <Card className="book-cover" onClick={() => this.props.handleClick(this.state.selectedBookAsin)}>
                 {this.state.selected && <MyBadge content="SELECTED!" colour="gold" />}
                 <Card.Img variant="top" src={this.props.bookObj.img} />
                 <Card.Body>

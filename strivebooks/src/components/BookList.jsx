@@ -22,7 +22,8 @@ class BookList extends Component {
             this.bookArr = items.filter(b => b.title.toLowerCase().includes(this.state.bookQuery))
         )
     }
-    handleClick = (asin) => {
+    getAsin = (asin) => {
+        console.log('getAsin: ' + asin)
         this.setState({
             selectedBookAsin: asin
         })
@@ -40,13 +41,11 @@ class BookList extends Component {
                 <Row>
                     <Col className="d-flex flex-wrap col-12 col-sm-8">
                         {this.bookArr.map((item) => (
-                            <SingleBook key={item.asin} bookObj={item} handleClick={this.handleClick} />
+                            <SingleBook key={item.asin} bookObj={item} handleClick={(asin) => this.getAsin(asin)} />
                         ))}
                     </Col>
                     <Col className="col-12 col-sm-4">
-                        {
-                            this.state.selectedBookAsin ? <CommentArea selectedBookAsin={this.state.selectedBookAsin} /> : <CommentArea />
-                        }
+                        <CommentArea selectedBookAsin={this.state.selectedBookAsin} />
                     </Col>
                 </Row>
             </Container>

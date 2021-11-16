@@ -6,10 +6,9 @@ import { Trash } from 'react-bootstrap-icons'
 
 class CommentArea extends Component {
     state = {
-        headers: {
-            headers: {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTgyOGY4NmFhY2FhMjAwMTU1MmExODAiLCJpYXQiOjE2MzY2MzY5MzcsImV4cCI6MTYzNzg0NjUzN30.uqOJ27uEjuSzPvSujE9DuNRI0lJELmoanrTPYDsO6qU"
-            }
+
+        authorization: {
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTgyOGY4NmFhY2FhMjAwMTU1MmExODAiLCJpYXQiOjE2MzY2MzY5MzcsImV4cCI6MTYzNzg0NjUzN30.uqOJ27uEjuSzPvSujE9DuNRI0lJELmoanrTPYDsO6qU"
         },
         commentsEndpoint: "https://striveschool-api.herokuapp.com/api/comments/",
 
@@ -20,8 +19,6 @@ class CommentArea extends Component {
             rate: 5,
             elementId: this.props.selectedBookAsin
         },
-        selectedBookAsin: this.props.selectedBookAsin
-
     }
 
     componentDidMount = () => {
@@ -29,6 +26,7 @@ class CommentArea extends Component {
     }
 
     componentDidUpdate = (prevProps) => {
+        console.log(`prevProps.selectedBookAsin: ${ prevProps.selectedBookAsin } VS this.props.selectedBookAsin: ${ this.props.selectedBookAsin }`)
         if (prevProps.selectedBookAsin !== this.props.selectedBookAsin) {
             this.fetchComments()
         }
@@ -36,7 +34,7 @@ class CommentArea extends Component {
 
     fetchComments = async () => {
         try {
-            let response = await fetch(this.state.commentsEndpoint + this.state.selectedBookAsin, this.state.headers)
+            let response = await fetch(this.state.commentsEndpoint + this.props.selectedBookAsin, { headers: this.state.authorization })
             if (response.ok) {
                 let data = await response.json()
                 this.setState({
