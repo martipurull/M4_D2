@@ -37,6 +37,10 @@
   }
 }
 
+h5, .form-label {
+  color: white;
+}
+
 .book-cover {
   max-width: 200px;
   margin-bottom: 20px;

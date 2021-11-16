@@ -157,7 +157,8 @@ const CommentArea = ({ selectedBookAsin }) => {
     return (
         <>
             {isError && <WarningSign content="There seems to be an error with the comments for this book..." />}
-            <h6>Readers' Comments for {selectedBookAsin}</h6>
+            <h5>Readers' Comments</h5>
+            {/* {selectedBookAsin && <h6></h6>} */}
             <ListGroup className="mt-2 mb-2 readers-comments">
 
                 {
