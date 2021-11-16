@@ -1,31 +1,29 @@
 
-import { Component } from 'react'
+import { useState } from 'react'
 import Card from 'react-bootstrap/Card'
 import MyBadge from './MyBadge'
 // import CommentArea from './CommentArea'
 
 
-class SingleBook extends Component {
-    state = {
-        selectedBookAsin: this.props.bookObj.asin
-    }
+const SingleBook = ({ bookObj, handleClick }) => {
+    const [selectedBookAsin, setSelectedBookAsin] = useState(bookObj.asin)
+    const [isSelected, setIsSelected] = useState(false)
 
-    bookObj = {}
-
-    render() {
-        return (
-            <Card className="book-cover" onClick={() => this.props.handleClick(this.state.selectedBookAsin)}>
-                {this.state.selected && <MyBadge content="SELECTED!" colour="gold" />}
-                <Card.Img variant="top" src={this.props.bookObj.img} />
-                <Card.Body>
-                    <Card.Title>{this.props.bookObj.title}</Card.Title>
-                </Card.Body>
-                {/* {
+    // state = {
+    //     selectedBookAsin: this.props.bookObj.asin
+    // }
+    return (
+        <Card className="book-cover" onClick={() => { handleClick(selectedBookAsin); setIsSelected(true) }}>
+            {isSelected && <MyBadge content="SELECTED!" colour="gold" />}
+            <Card.Img variant="top" src={bookObj.img} />
+            <Card.Body>
+                <Card.Title>{bookObj.title}</Card.Title>
+            </Card.Body>
+            {/* {
                     this.state.selected && <CommentArea {...this.state}/>
                 } */}
-            </Card>
-        )
-    }
+        </Card>
+    )
 }
 
 export default SingleBook
