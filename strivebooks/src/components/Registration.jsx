@@ -13,7 +13,9 @@ const Registration = () => {
         password: '',
         passwordRepeat: ''
     })
-    // const [isValid, setIsValid] = useState(false)
+
+
+
 
     const handleInput = (fieldName, value) => {
         setRegistrationDetails({
@@ -22,10 +24,11 @@ const Registration = () => {
         })
     }
 
-    const passwordHasNum = (password) => {
+    const passwordHasNumAndLetters = (password) => {
         const passwordArr = password.split('')
         let numsInPassword = passwordArr.filter(char => !isNaN(char))
-        if (numsInPassword.length > 0) {
+        let lettersInPassword = passwordArr.filter(char => isNaN(char))
+        if (numsInPassword.length > 0 && lettersInPassword.length > 0) {
             return true
         } else {
             return false
@@ -42,14 +45,10 @@ const Registration = () => {
     }
 
     const validateForm = () => {
-        if (passwordHasNum(registrationDetails.password) && passwordsMatch(registrationDetails.passwordRepeat)) {
+        if (passwordHasNumAndLetters(registrationDetails.password) && passwordsMatch(registrationDetails.passwordRepeat)) {
             return true
         }
     }
-
-    // const isFormValid = () => {
-    //     return isValid
-    // }
 
     useEffect(() => {
         validateForm()
