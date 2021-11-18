@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
@@ -13,6 +13,7 @@ const Registration = () => {
         password: '',
         passwordRepeat: ''
     })
+    const [isValid, setIsValid] = useState(false)
 
     const handleInput = (fieldName, value) => {
         setRegistrationDetails({
@@ -22,9 +23,12 @@ const Registration = () => {
     }
 
     const isFormValid = () => {
-        const { name, surname, email, password, passwordRepeat } = registrationDetails
-        return name && surname && email && password && passwordRepeat
+        return isValid
     }
+
+    useEffect(() => {
+        isFormValid()
+    }, [registrationDetails])
 
     return (
         <Container className="my-5 px-5">
@@ -81,7 +85,7 @@ const Registration = () => {
                             onChange={(e) => handleInput('passwordRepeat', e.target.value)} />
                     </Form.Group>
                 </Form.Row>
-                <Button variant="success" type="submit" disabled={!isFormValid} >
+                <Button variant="success" type="submit" disabled={!isFormValid()} >
                     Register now!
                 </Button>
             </Form>
