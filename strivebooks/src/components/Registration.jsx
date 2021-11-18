@@ -13,7 +13,7 @@ const Registration = () => {
         password: '',
         passwordRepeat: ''
     })
-    const [isValid, setIsValid] = useState(false)
+    // const [isValid, setIsValid] = useState(false)
 
     const handleInput = (fieldName, value) => {
         setRegistrationDetails({
@@ -22,12 +22,37 @@ const Registration = () => {
         })
     }
 
-    const isFormValid = () => {
-        return isValid
+    const passwordHasNum = (password) => {
+        const passwordArr = password.split('')
+        let numsInPassword = passwordArr.filter(char => !isNaN(char))
+        if (numsInPassword.length > 0) {
+            return true
+        } else {
+            return false
+        }
+
     }
 
+    const passwordsMatch = (passwordToCheck) => {
+        if (registrationDetails.password === passwordToCheck) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    const validateForm = () => {
+        if (passwordHasNum(registrationDetails.password) && passwordsMatch(registrationDetails.passwordRepeat)) {
+            return true
+        }
+    }
+
+    // const isFormValid = () => {
+    //     return isValid
+    // }
+
     useEffect(() => {
-        isFormValid()
+        validateForm()
     }, [registrationDetails])
 
     return (
@@ -85,7 +110,7 @@ const Registration = () => {
                             onChange={(e) => handleInput('passwordRepeat', e.target.value)} />
                     </Form.Group>
                 </Form.Row>
-                <Button variant="success" type="submit" disabled={!isFormValid()} >
+                <Button variant="success" type="submit" disabled={!validateForm()} >
                     Register now!
                 </Button>
             </Form>
