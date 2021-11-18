@@ -47,6 +47,7 @@ const CommentArea = ({ selectedBookAsin }) => {
             ...commentToSubmit,
             elementId: selectedBookAsin
         })
+        // eslint-disable-next-line
     }, [selectedBookAsin])
 
     // componentDidUpdate = (prevProps) => {

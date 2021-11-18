@@ -6,6 +6,7 @@ import MyBadge from './MyBadge'
 
 
 const SingleBook = ({ bookObj, handleClick }) => {
+    // eslint-disable-next-line
     const [selectedBookAsin, setSelectedBookAsin] = useState(bookObj.asin)
     const [isSelected, setIsSelected] = useState(false)
 

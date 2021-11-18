@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Container, Row, Col, } from "react-bootstrap";
-import items from '../data/scifi.json';
+import items from '../data/fantasy.json'
 import SingleBook from "./SingleBook";
 import Form from 'react-bootstrap/Form'
 // import Button from 'react-bootstrap/Button'
