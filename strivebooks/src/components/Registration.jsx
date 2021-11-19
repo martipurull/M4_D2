@@ -14,7 +14,8 @@ const Registration = () => {
         passwordRepeat: ''
     })
 
-
+    const [originalPasswordError, setOriginalPasswordError] = useState(true)
+    const [repeatPasswordError, setRepeatPasswordError] = useState(true)
 
 
     const handleInput = (fieldName, value) => {
@@ -29,6 +30,7 @@ const Registration = () => {
         let numsInPassword = passwordArr.filter(char => !isNaN(char))
         let lettersInPassword = passwordArr.filter(char => isNaN(char))
         if (numsInPassword.length > 0 && lettersInPassword.length > 0) {
+            setOriginalPasswordError(false)
             return true
         } else {
             return false
@@ -38,6 +40,7 @@ const Registration = () => {
 
     const passwordsMatch = (passwordToCheck) => {
         if (registrationDetails.password === passwordToCheck) {
+            setRepeatPasswordError(false)
             return true
         } else {
             return false
